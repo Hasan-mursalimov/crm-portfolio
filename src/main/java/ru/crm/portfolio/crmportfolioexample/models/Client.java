@@ -7,7 +7,16 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Calendar;
 
+/**
+ * Класс клиент со свойствами <code>firstName</code>,<code>lastName</code>,<code>purchaseVolumes</code>,<code>inn</code>,
+ * <code>legalName</code>,<code>tradeName</code>,<code>comment</code>,<code>birthday</code>,<code>registrationDate</code>,
+ * <code>state</code>,<code>account</code>,<code>product</code>,<code>tern</code>,c методом <code>compareTo</code>,
+ * с ENUM <code>State</code>,<code>RegistrationTern</code>
+ * @author Hasan Mursalimov
+ * @version 1.0
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -15,30 +24,6 @@ import java.time.LocalDate;
 @Entity
 public class Client {
 
-    /**
-     * Статус клиента
-     */
-    public enum State {
-        /**
-         * NOT_CONFIRMED - не подтверждено
-         * CONFIRMED - подтверждено
-         * BANNED - забаннен
-         * DELETED - удален
-         * WITHOUT_A_MANAGER - без менеджера
-         */
-        NOT_CONFIRMED, CONFIRMED, BANNED, DELETED, WITHOUT_A_MANAGER
-    }
-
-    /**
-     * статус клиента по пользованию сервисом
-     */
-    public enum RegistrationTern {
-        /**
-         * NEW - новый клиент
-         * OLD - старый клиент
-         */
-        NEW, OLD;
-    }
 
 
     @Id
@@ -48,39 +33,40 @@ public class Client {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    /**поле объема закупа */
     private Double purchaseVolumes;
+    /**поле Инн */
     private Long inn;
+    /**поле официальное название*/
     @Column(name = "legal_name")
     private String legalName;
+    /**поле торговое название */
     @Column(name = "trade_name")
     private String tradeName;
-    private LocalDate birthday;
+    private String comment;
+    private Calendar birthday;
+    /**поле дата регистрации*/
     @Column(name = "registration_date")
     private LocalDate registrationDate;
     @Enumerated(value = EnumType.STRING)
-    private State state;
     @ManyToOne
     @JoinColumn(name = "account_id")
     private Account account;
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
-    @Enumerated(value = EnumType.STRING)
-    private RegistrationTern tern;
-
+    private String numberTel;
+    /**
+     * сортировка клиента по закупу, времени пребыванию на портале и статусу
+     * @param client - передаваемый клиент
+     * @return возвращение результата
+     */
     public int compareTo(Client client) {
         int result = 0;
         if (this.getPurchaseVolumes() != client.getPurchaseVolumes()) {
             return this.getPurchaseVolumes() - client.getPurchaseVolumes() > 0 ? -1 : 1;
         }
-        if (this.getTern() != client.getTern()) {
-            result = this.getTern() == RegistrationTern.NEW ? -1 : 1;
-            return result;
-        }
-        if (this.getState() != client.getState()) {
-            return this.getState() == State.WITHOUT_A_MANAGER ? -1 : 1;
-        }
         return result;
-    }
+    };
 
 }

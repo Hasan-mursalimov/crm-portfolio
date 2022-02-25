@@ -1,6 +1,7 @@
 package ru.crm.portfolio.crmportfolioexample.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import ru.crm.portfolio.crmportfolioexample.enums.Role;
 import ru.crm.portfolio.crmportfolioexample.models.Account;
 
 import java.util.List;
@@ -12,4 +13,7 @@ public interface AccountRepositories extends JpaRepository<Account, Long> {
 
     List<Account> findAllByState(Account.State state);
 
+    List<Account> findAllByRole(Role role);
+
+    Optional<Account> findByConfirmUUID(String uuid);
 }

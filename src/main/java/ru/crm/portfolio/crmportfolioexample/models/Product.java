@@ -8,6 +8,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Класс продукт со свойствами <code>vendorСode</code>,<code>nameProduct</code>,<code>price</code>,<code>remainder</code>,
+ * <code>clients</code>
+ * @author Hasan Mursalimov
+ * @version 1.0
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

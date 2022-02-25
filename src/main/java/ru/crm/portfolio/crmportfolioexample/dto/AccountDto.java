@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.crm.portfolio.crmportfolioexample.models.Account;
+import ru.crm.portfolio.crmportfolioexample.enums.Role;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +21,8 @@ public class AccountDto {
     private String firstName;
     private String lastName;
     private String numberTel;
+    private String password;
+    private Role role;
 
     public static AccountDto from(Account account){
         return AccountDto.builder()
@@ -28,6 +31,8 @@ public class AccountDto {
                 .firstName(account.getFirstName())
                 .lastName(account.getLastName())
                 .numberTel(account.getNumberTel())
+                .password(account.getHashPassword())
+                .role(account.getRole())
                 .build();
     }
     public static List<AccountDto> from(List<Account> accounts) {

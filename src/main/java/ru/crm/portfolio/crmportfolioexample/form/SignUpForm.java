@@ -1,7 +1,8 @@
-package ru.crm.portfolio.crmportfolioexample.dto;
+package ru.crm.portfolio.crmportfolioexample.form;
 
 
 import lombok.Data;
+import ru.crm.portfolio.crmportfolioexample.enums.Role;
 
 @Data
 public class SignUpForm {
@@ -10,4 +11,6 @@ public class SignUpForm {
     private String email;
     private String password;
     private String numberTel;
+    private Role role;
+
 }
