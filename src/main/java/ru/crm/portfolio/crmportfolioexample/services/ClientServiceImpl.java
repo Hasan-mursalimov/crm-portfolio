@@ -5,10 +5,8 @@ import org.springframework.stereotype.Service;
 import ru.crm.portfolio.crmportfolioexample.dto.ClientDto;
 import ru.crm.portfolio.crmportfolioexample.form.ClientSaveForm;
 import ru.crm.portfolio.crmportfolioexample.models.Client;
-import ru.crm.portfolio.crmportfolioexample.repositories.AccountRepositories;
 import ru.crm.portfolio.crmportfolioexample.repositories.ClientRepositories;
 
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -16,14 +14,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
 
-    private ClientRepositories clientRepositories;
-
-    private AccountService accountService;
+    private final ClientRepositories clientRepositories;
 
     @Override
     public void addClient(ClientSaveForm form) {
-
-        accountService.findAllUserState();
 
         Client newClient = Client.builder()
                 .account(form.getAccount())
@@ -36,5 +30,10 @@ public class ClientServiceImpl implements ClientService {
                 .build();
 
         clientRepositories.save(newClient);
+    }
+
+    @Override
+    public List<ClientDto> getAllClients() {
+        return ClientDto.from(clientRepositories.findAll());
     }
 }

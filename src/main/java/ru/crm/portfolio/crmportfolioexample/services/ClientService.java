@@ -9,4 +9,6 @@ public interface ClientService {
 
     void addClient(ClientSaveForm form);
 
+    List<ClientDto> getAllClients();
+
 }

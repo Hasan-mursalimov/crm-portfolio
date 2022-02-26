@@ -19,6 +19,7 @@ public class SignUpServiceImpl implements SignUpService {
 
     @Override
     public void signUp(SignUpForm form) {
+
         Account account = Account.builder()
                 .firstName(form.getFirstName())
                 .lastName(form.getLastName())
@@ -30,6 +31,5 @@ public class SignUpServiceImpl implements SignUpService {
                 .build();
 
         accountsRepository.save(account);
-
     }
 }

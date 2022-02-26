@@ -32,9 +32,9 @@ public class ClientSaveController {
     public String saveClient(@Valid ClientSaveForm form, BindingResult bindingResult, Model model){
         if (bindingResult.hasErrors()){
             model.addAttribute("clientSaveForm", new ClientSaveForm());
-            return "client_save";
+            return "clients";
         }
         clientService.addClient(form);
-        return "redirect:/users";
+        return "redirect:/clients";
     }
 }

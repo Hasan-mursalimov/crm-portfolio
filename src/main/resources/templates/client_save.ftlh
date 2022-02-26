@@ -62,8 +62,7 @@
 
     <br>
 
-    <input type="submit" name="" value="Add">
+    <input type="submit" name="" value="add">
 </form>
-
 </body>
 </html>

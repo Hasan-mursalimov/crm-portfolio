@@ -12,5 +12,10 @@ public class ClientsController {
 
     private final ClientService clientService;
 
+    @GetMapping("/clients")
+    public String getClients(Model model){
+        model.addAttribute("clients", clientService.getAllClients());
+        return "clients";
+    }
 
 }
