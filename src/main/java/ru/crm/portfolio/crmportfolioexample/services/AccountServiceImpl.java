@@ -57,4 +57,11 @@ public class AccountServiceImpl implements AccountService {
         client.setAccount(account);
         clientRepositories.save(client);
     }
+
+    @Override
+    public void updateSalesPlan(Long id,AccountDto accountDto) {
+        Account account = accountsRepository.getById(id);
+        account.setSalesPlan(accountDto.getSalesPlan());
+        accountsRepository.save(account);
+    }
 }

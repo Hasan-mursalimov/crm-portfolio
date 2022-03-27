@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import ru.crm.portfolio.crmportfolioexample.enums.Role;
 
 import javax.persistence.*;
+import javax.validation.constraints.PositiveOrZero;
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,7 +15,8 @@ import java.util.List;
  * класс аккаунт со свойствами <code>salesPlan</code>,<code>completedPlan</code>,<code>email</code>,<code>hashPassword</code>,
  * <code>firstName</code>,<code>lastName</code>,<code>numberTel</code>,<code>role</code>,<code>state</code>,<code>state</code>,
  * <code>client</code>
- * @author  Мурсалимов Хасан
+ *
+ * @author Мурсалимов Хасан
  * @version 1.0
  */
 @AllArgsConstructor
@@ -29,9 +31,9 @@ public class Account implements Serializable {
     /**
      * статус аккаунта
      */
-    public enum State{
+    public enum State {
         /**
-         *FIRED - уволенный
+         * FIRED - уволенный
          * WORKING - работает
          */
         FIRED, WORKING
@@ -40,17 +42,27 @@ public class Account implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    /** план по продажам*/
-    private Long salesPlan;
-    /** выполненный план*/
-    private Long completedPlan;
+    /**
+     * план по продажам
+     */
+    @Column(columnDefinition = "integer default 0")
+    @PositiveOrZero
+    private Integer salesPlan;
+    /**
+     * выполненный план
+     */
+    @Column(columnDefinition = "integer default 0")
+    @PositiveOrZero
+    private Integer completedPlan;
+    @Column(nullable = false,unique = true)
     private String email;
-    @Column(name = "hash_password")
+    @Column(name = "hash_password", nullable = false)
     private String hashPassword;
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Column(nullable = false)
     private String numberTel;
     @Enumerated(value = EnumType.STRING)
     private Role role;
@@ -61,8 +73,17 @@ public class Account implements Serializable {
 
     private String confirmUUID;
 
-    public boolean isAdmin(){
+
+    public boolean isAdmin() {
         return role.equals(Role.ADMIN);
+    }
+
+    public boolean isSupervisor() {
+        return role.equals(Role.SUPERVISOR);
+    }
+
+    public boolean isSalesManager(){
+        return role.equals(Role.SALES_MANAGER);
     }
 
 }

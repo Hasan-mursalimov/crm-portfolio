@@ -1,4 +1,5 @@
 <!doctype html>
+<#import "spring.ftl" as spring/>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,20 +44,29 @@
     <br>
 
     <label for="numberTel">number tel</label>
-    <input id="numberTel" type="text" name="numberTel" placeholder="number tel">
+    <input id="numberTel" type="tel" name="numberTel" placeholder="number tel">
 
     <br>
-
 
     <label for="birthday">birthday</label>
     <input id="birthday" type="date" name="birthday" placeholder="birthday">
 
     <br>
 
+    <label for="address">address</label>
+    <input id="address" type="text" name="address" placeholder="address">
 
-        <select id="accounts" name="account">
+    <br>
+
+    <br>
+
+    <label for="email">email</label>
+    <input id="email" type="email" name="email" placeholder="email">
+
+
+        <select id="accounts" name="accountId">
             <#list accounts as account>
-            <option value="account">${account.firstName} ${account.lastName}</option>
+            <option value="${account.id}">${account.firstName} ${account.lastName}</option>
             </#list>
         </select>
 

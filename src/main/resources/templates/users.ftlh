@@ -27,6 +27,7 @@
             <td>${account.firstName}</td>
             <td>${account.lastName}</td>
             <td>${account.role}</td>
+            <td>${account.salesPlan}</td>
 
             <td>
                 <form method="post" action="/users/${account.id}/delete">
@@ -34,6 +35,18 @@
                     <input type="submit" value="Delete">
                 </form>
             </td>
+            <div>
+                <#if isSupervisor>
+                    <td>
+                        <form method="post" action="/users/${account.id}/update">
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                            <input id="salesPlan" type="text" name="salesPlan" placeholder="sales plan">
+                            <input type="submit" name="" value="update">
+                        </form>
+                    </td>
+                </#if>
+            </div>
+            <td><a href="/profile/${account.id}" id="profile">перейти</a></td>
         </tr>
     </#list>
 </table>

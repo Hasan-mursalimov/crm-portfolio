@@ -5,10 +5,16 @@ import ru.crm.portfolio.crmportfolioexample.form.ClientSaveForm;
 
 import java.util.List;
 
-public interface ClientService {
+public interface ClientsService {
 
     void addClient(ClientSaveForm form);
 
-    List<ClientDto> getAllClients();
+    List<ClientDto> getClientByUser(Long accountId);
+
+    List<ClientDto>getAllClient();
+
+
+    void addInfoClient(Long clientId,ClientSaveForm form);
+
 
 }

@@ -46,6 +46,11 @@
 
     <br>
 
+    <label for="numberTel">number tel</label>
+    <input id="numberTel" type="text" name="numberTel" placeholder="number tel">
+
+    <br>
+
     <select id="role" name="role">
         <option value="ADMIN">ADMIN</option>
         <option value="SALES_MANAGER">SALES_MANAGER</option>

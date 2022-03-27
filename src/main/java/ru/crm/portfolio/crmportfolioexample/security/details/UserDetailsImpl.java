@@ -10,7 +10,10 @@ import java.util.Collections;
 
 public class UserDetailsImpl implements UserDetails {
 
+    private static final long serialVersionUID = -6865465947903791475L;
+
     private final Account account;
+
 
     public UserDetailsImpl(Account account) {
         this.account = account;
@@ -51,4 +54,14 @@ public class UserDetailsImpl implements UserDetails {
     public boolean isEnabled() {
         return account.getState().equals(Account.State.WORKING);
     }
+
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public Long id() {
+        return account.getId();
+    }
+
 }

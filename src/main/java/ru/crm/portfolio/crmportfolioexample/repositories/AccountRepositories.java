@@ -16,4 +16,6 @@ public interface AccountRepositories extends JpaRepository<Account, Long> {
     List<Account> findAllByRole(Role role);
 
     Optional<Account> findByConfirmUUID(String uuid);
+
+    List<Account> findByEmailOrLastNameOrFirstNameOrNumberTel(String email, String lastName, String firstName, String numberTel);
 }

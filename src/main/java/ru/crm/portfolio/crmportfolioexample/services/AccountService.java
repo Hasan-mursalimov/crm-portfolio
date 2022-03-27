@@ -2,7 +2,6 @@ package ru.crm.portfolio.crmportfolioexample.services;
 
 import ru.crm.portfolio.crmportfolioexample.dto.AccountDto;
 import ru.crm.portfolio.crmportfolioexample.dto.ClientDto;
-import ru.crm.portfolio.crmportfolioexample.models.Account;
 
 import java.util.List;
 
@@ -29,4 +28,6 @@ public interface AccountService {
     void addAccount(AccountDto accountDto);
 
     void addClientToUser(Long id, ClientDto clientDto);
+
+    void updateSalesPlan(Long id,AccountDto accountDto);
 }

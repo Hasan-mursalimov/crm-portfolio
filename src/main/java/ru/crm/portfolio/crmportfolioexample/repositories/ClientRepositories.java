@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface ClientRepositories extends JpaRepository<Client, Long> {
 
+    List<Client> findAllByAccount_id(Long id);
 
+//    List<Client> findByLastNameAndFirstNameAndTradeNameAndInnLike(String search);
 }

@@ -1,22 +1,31 @@
 package ru.crm.portfolio.crmportfolioexample.form;
 
 import lombok.Data;
-import ru.crm.portfolio.crmportfolioexample.models.Account;
-
-import java.time.LocalDate;
-import java.util.Calendar;
+import org.springframework.format.annotation.NumberFormat;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 public class ClientSaveForm {
     private Long id;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
-    private Double purchaseVolumes;
+    @NumberFormat
     private Long inn;
+    @NotEmpty
     private String legalName;
+    @NotEmpty
     private String tradeName;
-    private Calendar birthday;
-    private LocalDate registrationDate;
-    private Account account;
+    private String birthday;
+    @NotEmpty
+    @Email
+    private String email;
+    private String registrationDate;
+    @NotEmpty
+    private String address;
+    @NotEmpty
     private String numberTel;
+    private Long accountId;
 }

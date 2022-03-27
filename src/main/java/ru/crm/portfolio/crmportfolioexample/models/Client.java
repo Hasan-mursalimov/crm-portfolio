@@ -6,8 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.PositiveOrZero;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 /**
  * Класс клиент со свойствами <code>firstName</code>,<code>lastName</code>,<code>purchaseVolumes</code>,<code>inn</code>,
@@ -24,18 +24,18 @@ import java.util.Calendar;
 @Entity
 public class Client {
 
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
     /**поле объема закупа */
+    @PositiveOrZero
     private Double purchaseVolumes;
     /**поле Инн */
+    @Column(nullable = false, unique = true)
     private Long inn;
     /**поле официальное название*/
     @Column(name = "legal_name")
@@ -44,18 +44,32 @@ public class Client {
     @Column(name = "trade_name")
     private String tradeName;
     private String comment;
-    private Calendar birthday;
+    @Column(nullable = false)
+    private LocalDate birthday;
     /**поле дата регистрации*/
     @Column(name = "registration_date")
     private LocalDate registrationDate;
     @Enumerated(value = EnumType.STRING)
     @ManyToOne
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "account_id", columnDefinition = "integer default 0")
     private Account account;
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+    @Column(nullable = false)
     private String numberTel;
+    @Column(nullable = false)
+    private String address;
+    private State state;
+    @Column(nullable = false, unique = true)
+    private String email;
+
+    public enum State {
+        BANNED, NOT_MANAGER, SATISFACTORILY
+    }
+
+
+
     /**
      * сортировка клиента по закупу, времени пребыванию на портале и статусу
      * @param client - передаваемый клиент

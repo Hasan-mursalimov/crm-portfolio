@@ -11,6 +11,8 @@
 <h1>Клиенты</h1>
 <br>
 <table>
+
+    <a href="/saveClient" id="add">добавить</a>
     <tr>
         <th>ID</th>
         <th>Legal name</th>
@@ -18,8 +20,8 @@
         <th>First name</th>
         <th>Last name</th>
         <th>Number tel</th>
-        <th>Sales manager</th>
     </tr>
+
     <#list clients as client>
         <tr>
             <td>${client.id}</td>
@@ -28,7 +30,9 @@
             <td>${client.firstName}</td>
             <td>${client.lastName}</td>
             <td>${client.numberTel}</td>
-            <td>${client.account}</td>
+            <td>
+                <a href="/${client.id}/clientProfile" id="clientProfile">перейти</a>
+            </td>
         </tr>
     </#list>
 </table>

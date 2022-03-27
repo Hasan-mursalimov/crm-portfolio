@@ -18,6 +18,10 @@
     <label for="password">Enter password here:</label>
     <input id="password" type="text" name="password" placeholder="Your password">
     <input type="submit" name="" value="Sign In">
+
+    <label>
+        <input type="checkbox" name="rememberMe">Запомни меня
+    </label>
 </form>
 </body>
 </html>

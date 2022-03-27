@@ -22,12 +22,16 @@ public class AccountDto {
     private String lastName;
     private String numberTel;
     private String password;
+    private Integer completedPlan;
+    private Integer salesPlan;
     private Role role;
 
     public static AccountDto from(Account account){
         return AccountDto.builder()
                 .id(account.getId())
                 .email(account.getEmail())
+                .completedPlan(account.getCompletedPlan())
+                .salesPlan(account.getSalesPlan())
                 .firstName(account.getFirstName())
                 .lastName(account.getLastName())
                 .numberTel(account.getNumberTel())
