@@ -29,10 +29,12 @@ public class ClientProfileServiceImpl implements ClientProfileService {
 
     @Override
     public void updateClientInfo(Long clientId, ClientDto client) {
-        Client client1 = Client.builder()
-                .numberTel(client.getNumberTel())
-                .address(client.getAddress())
-                .build();
+        Client client1 = clientRepositories.getById(clientId);
+//        client1.getAddress(client.getAddress());
+//        client1.getNumberTel(client.getNumberTel());
+//        client1.getEmail(client.getEmail());
         clientRepositories.save(client1);
     }
+
+
 }

@@ -9,4 +9,6 @@ public interface ClientProfileService {
     void addComment(ClientDto client);
 
     void updateClientInfo(Long clientId, ClientDto client);
+
+
 }

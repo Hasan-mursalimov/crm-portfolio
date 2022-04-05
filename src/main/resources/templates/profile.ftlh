@@ -34,6 +34,9 @@
                     <input type="submit" value="delete">
                 </form>
             </td>
+            <td>
+                <a href="/${client.id}/clientProfile" id="clientProfile">перейти</a>
+            </td>
         </tr>
     </#list>
 </table>

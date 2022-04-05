@@ -35,11 +35,8 @@ public class ProfileServiceImpl implements ProfileService {
 
     @Override
     public ClientDto deleteClient(Long clientId) {
-        Account newAccount = Account.builder()
-                .id(null)
-                .build();
         Client client = clientRepositories.getById(clientId);
-        client.setAccount(newAccount);
+        client.setAccount(null);
         clientRepositories.save(client);
         return ClientDto.from(client);
     }

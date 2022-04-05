@@ -69,7 +69,6 @@
             <option value="${account.id}">${account.firstName} ${account.lastName}</option>
             </#list>
         </select>
-
     <br>
 
     <input type="submit" name="" value="add">
