@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.crm.portfolio.crmportfolioexample.dto.ClientDto;
 import ru.crm.portfolio.crmportfolioexample.exempions.UserNotFoundException;
 import ru.crm.portfolio.crmportfolioexample.form.ClientSaveForm;
+import ru.crm.portfolio.crmportfolioexample.models.Account;
 import ru.crm.portfolio.crmportfolioexample.models.Client;
 import ru.crm.portfolio.crmportfolioexample.repositories.AccountRepositories;
 import ru.crm.portfolio.crmportfolioexample.repositories.ClientRepositories;
@@ -60,6 +61,14 @@ public class ClientsServiceImpl implements ClientsService {
         Client client = clientRepositories.getById(clientId);
         client.setNumberTel(form.getNumberTel());
         client.setAddress(form.getAddress());
+    }
+
+    @Override
+    public void addClientToUser(Long userId, ClientDto clientDto) {
+        Account account = accountRepositories.getById(userId);
+        Client client =clientRepositories.getById(clientDto.getId());
+        client.setAccount(account);
+        clientRepositories.save(client);
     }
 
 

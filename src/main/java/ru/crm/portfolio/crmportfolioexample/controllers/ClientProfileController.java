@@ -8,7 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.crm.portfolio.crmportfolioexample.dto.ClientDto;
+import ru.crm.portfolio.crmportfolioexample.form.ClientSaveForm;
 import ru.crm.portfolio.crmportfolioexample.services.ClientProfileService;
+
+import javax.validation.Valid;
 
 @RequiredArgsConstructor
 @Controller
@@ -23,9 +26,8 @@ public class ClientProfileController {
     }
 
     @RequestMapping(value = "/{id}/clientProfile", method = RequestMethod.POST)
-    public String addInfoClient( ClientDto clientDto, @PathVariable("id") Long clientId, Model model){
-//        model.addAttribute("clientDto", clientDto);
-        clientProfileService.updateClientInfo(clientId ,clientDto);
+    public String addInfoClient(@PathVariable("id") Long clientId, Model model){
+        clientProfileService.updateClientInfo(clientId);
         return "redirect:/clients";
     }
 

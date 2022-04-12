@@ -3,6 +3,7 @@ package ru.crm.portfolio.crmportfolioexample.services;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.crm.portfolio.crmportfolioexample.dto.ClientDto;
+import ru.crm.portfolio.crmportfolioexample.form.ClientSaveForm;
 import ru.crm.portfolio.crmportfolioexample.models.Client;
 import ru.crm.portfolio.crmportfolioexample.repositories.ClientRepositories;
 
@@ -28,12 +29,12 @@ public class ClientProfileServiceImpl implements ClientProfileService {
     }
 
     @Override
-    public void updateClientInfo(Long clientId, ClientDto client) {
-        Client client1 = clientRepositories.getById(clientId);
-//        client1.getAddress(client.getAddress());
-//        client1.getNumberTel(client.getNumberTel());
-//        client1.getEmail(client.getEmail());
-        clientRepositories.save(client1);
+    public void updateClientInfo(Long clientId) {
+        Client clientUpdate = clientRepositories.getById(clientId);
+        clientUpdate.setEmail(clientUpdate.getEmail());
+        clientUpdate.setNumberTel(clientUpdate.getNumberTel());
+        clientUpdate.setAddress(clientUpdate.getAddress());
+        clientRepositories.save(clientUpdate);
     }
 
 

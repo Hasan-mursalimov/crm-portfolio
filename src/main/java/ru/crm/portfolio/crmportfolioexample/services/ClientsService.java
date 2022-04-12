@@ -13,8 +13,7 @@ public interface ClientsService {
 
     List<ClientDto>getAllClient();
 
-
     void addInfoClient(Long clientId,ClientSaveForm form);
 
-
+    void addClientToUser(Long userId, ClientDto clientDto);
 }

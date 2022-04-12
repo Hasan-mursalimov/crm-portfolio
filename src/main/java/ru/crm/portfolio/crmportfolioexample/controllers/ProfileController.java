@@ -20,18 +20,13 @@ public class ProfileController {
     public String getProfilePage(@PathVariable("id") Long userId,
                                  Model model) {
         model.addAttribute("user", profileService.getUser(userId));
-        getClientsOfUserPage(userId, model);
+        model.addAttribute("clients", profileService.getClientByUser(userId));
         return "profile";
     }
 
-    public String getClientsOfUserPage(@PathVariable("id") Long userId, Model model) {
-        model.addAttribute("clients", profileService.getClientByUser(userId));
-        return "/profile";
-    }
     @PostMapping("/profile/{id}/delete/{clientId}")
     public String deleteClient(@PathVariable("id") Long userId,@PathVariable("clientId") Long clientId, Model model){
         model.addAttribute("client", profileService.deleteClient(clientId));
-//        profileService.deleteClient(clientId);
-        return "redirect:/users";
+        return "redirect:/profile/"+userId;
     }
 }

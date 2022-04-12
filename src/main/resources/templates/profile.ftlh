@@ -21,7 +21,7 @@
         <th>Last name</th>
         <th>Trade name</th>
     </tr>
-
+    <a href="/${user.id}/clients" id="clients">Добавить клиентов</a>
     <#list  clients as client>
         <tr>
             <td>${client.firstName}</td>

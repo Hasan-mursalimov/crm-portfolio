@@ -11,7 +11,6 @@
 <h1>Клиенты</h1>
 <br>
 <table>
-
     <a href="/saveClient" id="add">добавить</a>
     <tr>
         <th>ID</th>
@@ -35,6 +34,39 @@
             </td>
         </tr>
     </#list>
+</table>
+<h2>Клиенты без менеджера</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Legal name</th>
+        <th>Trade name</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Number tel</th>
+    </tr>
+
+    <#list clientWithOutUser as client>
+    <tr>
+        <td>${client.id}</td>
+        <td>${client.legalName}</td>
+        <td>${client.tradeName}</td>
+        <td>${client.firstName}</td>
+        <td>${client.lastName}</td>
+        <td>${client.numberTel}</td>
+        <td>
+            <a href="/${client.id}/clientProfile" id="clientProfile">перейти</a>
+        </td>
+        <td>
+            <form method="post">
+                <input type="hidden" name="id" value="${client.id}">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                <input type="submit" name="" value="add">
+            </form>
+        </td>
+        </#list>
+
+
 </table>
 </body>
 </html>

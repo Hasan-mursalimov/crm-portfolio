@@ -1,6 +1,7 @@
 package ru.crm.portfolio.crmportfolioexample.services;
 
 import ru.crm.portfolio.crmportfolioexample.dto.ClientDto;
+import ru.crm.portfolio.crmportfolioexample.form.ClientSaveForm;
 
 public interface ClientProfileService {
 
@@ -8,7 +9,7 @@ public interface ClientProfileService {
 
     void addComment(ClientDto client);
 
-    void updateClientInfo(Long clientId, ClientDto client);
+    void updateClientInfo(Long clientId);
 
 
 }

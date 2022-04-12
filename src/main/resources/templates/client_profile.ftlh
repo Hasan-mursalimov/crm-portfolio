@@ -38,15 +38,18 @@
                 }
             </script>
         </head>
-        <form id="form1" style="display: none;">
-            <form method="post" action="/${client.id}/clientProfile">
+        <form id="form1" style="display: none;" method="post" action="/${client.id}/clientProfile">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+
                 <label for="numberTel">number tel</label>
                 <input id="numberTel" type="tel" name="numberTel" placeholder="number tel">
+
                 <label for="address">address</label>
                 <input id="address" type="text" name="address" placeholder="address">
+
                 <label for="email">email</label>
                 <input id="email" type="email" name="email" placeholder="email">
+
                 <input type="submit" name="" value="add">
             </form>
         </form>

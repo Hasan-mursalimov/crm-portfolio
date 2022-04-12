@@ -30,4 +30,6 @@ public interface AccountService {
     void addClientToUser(Long id, ClientDto clientDto);
 
     void updateSalesPlan(Long id,AccountDto accountDto);
+
+    List<ClientDto>getClientWithOutUser();
 }

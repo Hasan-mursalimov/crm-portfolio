@@ -11,6 +11,8 @@ import ru.crm.portfolio.crmportfolioexample.repositories.ClientRepositories;
 
 import java.util.List;
 
+import static ru.crm.portfolio.crmportfolioexample.dto.ClientDto.from;
+
 @Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
@@ -63,5 +65,10 @@ public class AccountServiceImpl implements AccountService {
         Account account = accountsRepository.getById(id);
         account.setSalesPlan(accountDto.getSalesPlan());
         accountsRepository.save(account);
+    }
+
+    @Override
+    public List<ClientDto> getClientWithOutUser() {
+        return from(clientRepositories.findAllByAccountIsNull());
     }
 }
