@@ -11,6 +11,7 @@ import ru.crm.portfolio.crmportfolioexample.repositories.AccountRepositories;
 import ru.crm.portfolio.crmportfolioexample.repositories.ClientRepositories;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import static ru.crm.portfolio.crmportfolioexample.dto.ClientDto.from;
@@ -31,13 +32,13 @@ public class ClientsServiceImpl implements ClientsService {
                 .account(accountRepositories.getById(form.getAccountId()))
                 .firstName(form.getFirstName())
                 .lastName(form.getLastName())
-                .email(form.getEmail())
+                .email(Collections.singletonList(form.getEmail()))
                 .registrationDate(LocalDate.now())
                 .tradeName(form.getTradeName())
                 .legalName(form.getLegalName())
-                .numberTel(form.getNumberTel())
+                .numberTel(Collections.singletonList(form.getNumberTel()))
                 .inn(form.getInn())
-                .address(form.getAddress())
+                .address(Collections.singletonList(form.getAddress()))
                 .birthday(LocalDate.parse(form.getBirthday()))
                 .state(Client.State.SATISFACTORILY)
                 .build();
@@ -59,8 +60,8 @@ public class ClientsServiceImpl implements ClientsService {
     @Override
     public void addInfoClient(Long clientId, ClientSaveForm form) {
         Client client = clientRepositories.getById(clientId);
-        client.setNumberTel(form.getNumberTel());
-        client.setAddress(form.getAddress());
+        client.setNumberTel(Collections.singletonList(form.getNumberTel()));
+        client.setAddress(Collections.singletonList(form.getAddress()));
     }
 
     @Override

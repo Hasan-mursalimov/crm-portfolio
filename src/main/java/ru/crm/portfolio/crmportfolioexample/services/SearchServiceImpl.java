@@ -25,8 +25,8 @@ public class SearchServiceImpl implements SearchService {
         return from(accountRepositories.findByEmailOrLastNameOrFirstNameOrNumberTel("%" + email + "%", "%" + lastName + "%", "%" + firstName + "%", "%" + numberTel + "%"));
     }
 
-//    @Override
-//    public List<ClientDto> searchClient(String search) {
-////        return from(clientRepositories.findByLastNameAndFirstNameAndTradeNameAndInnLike("%" + search + "%"));
-//    }
+    @Override
+    public List<ClientDto> searchClient(String lastName, String firstName, String tradeName, String inn) {
+        return from(clientRepositories.findByLastNameAndFirstNameAndTradeNameAndInnLike("%" + lastName + "%", "%" + firstName + "%", "%" + tradeName + "%", "%" + inn + "%"));
+    }
 }

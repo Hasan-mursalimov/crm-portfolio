@@ -23,12 +23,12 @@ public class ClientDto {
     private Long inn;
     private String legalName;
     private String tradeName;
-    private String comment;
+    private List<String> comment;
     private String birthday;
     private String registrationDate;
-    private String numberTel;
-    private String address;
-    private String email;
+    private List<String> numberTel;
+    private List<String> address;
+    private List<String> email;
 
 
     public static ClientDto from(Client client){

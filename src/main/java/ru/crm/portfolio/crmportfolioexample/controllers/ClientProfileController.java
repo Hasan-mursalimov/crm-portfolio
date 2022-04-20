@@ -27,7 +27,7 @@ public class ClientProfileController {
 
     @RequestMapping(value = "/{id}/clientProfile", method = RequestMethod.POST)
     public String addInfoClient(@PathVariable("id") Long clientId, Model model){
-        clientProfileService.updateClientInfo(clientId);
+//        clientProfileService.updateClientInfo(clientId);
         return "redirect:/clients";
     }
 

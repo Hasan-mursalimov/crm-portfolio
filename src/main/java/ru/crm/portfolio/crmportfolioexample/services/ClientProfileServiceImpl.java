@@ -29,9 +29,9 @@ public class ClientProfileServiceImpl implements ClientProfileService {
     }
 
     @Override
-    public void updateClientInfo(Long clientId) {
+    public void updateClientInfo(Long clientId, ClientDto clientDto) {
         Client clientUpdate = clientRepositories.getById(clientId);
-        clientUpdate.setEmail(clientUpdate.getEmail());
+        clientUpdate.getEmail();
         clientUpdate.setNumberTel(clientUpdate.getNumberTel());
         clientUpdate.setAddress(clientUpdate.getAddress());
         clientRepositories.save(clientUpdate);

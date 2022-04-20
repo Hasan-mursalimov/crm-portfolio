@@ -28,7 +28,7 @@ public class ClientSaveController {
     }
 
     @RequestMapping(value = "/saveClient", method = RequestMethod.POST)
-    public String saveClient(@Valid ClientSaveForm form, BindingResult bindingResult,
+    public String saveClient(@Valid ClientSaveForm form, BindingResult bindingResult, Long clientId,
                              Model model) {
         if (bindingResult.hasErrors()){
             model.addAttribute("clientSaveForm", form);

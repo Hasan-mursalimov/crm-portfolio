@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import ru.crm.portfolio.crmportfolioexample.form.SignUpForm;
@@ -24,14 +25,14 @@ public class SignUpController {
     }
 
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
-    public String signUp(@Valid SignUpForm form, BindingResult bindingResult, Model model) {
+    public String signUp(@Valid SignUpForm form, @PathVariable ("clientId") Long clientId,BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             // если возникли ошибки, то создаем атрибут signUpForm для новой страницы и кладем туда ту же форму
             model.addAttribute("signUpForm", form);
             return "sign_up";
         }
         signUpService.signUp(form);
-        return "redirect:/users";
+        return "redirect:/profile/"+clientId;
     }
 
 

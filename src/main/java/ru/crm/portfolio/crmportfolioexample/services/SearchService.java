@@ -9,5 +9,5 @@ public interface SearchService {
 
     List<AccountDto> searchAccount(String email, String lastName, String firstName, String numberTel);
 
-//    List<ClientDto> searchClient(String search);
+    List<ClientDto> searchClient(String lastName, String firstName, String tradeName, String inn);
 }

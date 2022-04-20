@@ -12,7 +12,7 @@ import ru.crm.portfolio.crmportfolioexample.services.AccountService;
 import ru.crm.portfolio.crmportfolioexample.services.ClientsService;
 
 @Controller
-@RequestMapping
+@RequestMapping("/clients")
 @RequiredArgsConstructor
 public class ClientsController {
 
@@ -20,7 +20,7 @@ public class ClientsController {
 
     private final AccountService accountService;
 
-    @GetMapping("/{userId}/clients")
+    @GetMapping("/{userId}")
     public String getClients(@PathVariable("userId") Long userId,Model model) {
         model.addAttribute("clients", clientsService.getAllClient());
         model.addAttribute("accounts", accountService.findAllUserState());
@@ -29,9 +29,9 @@ public class ClientsController {
         return "clients";
     }
 
-    @PostMapping("/{userId}/clients")
+    @PostMapping("/{userId}")
     public String addClintToUser(@PathVariable("userId") Long userId, ClientDto clientDto){
         clientsService.addClientToUser(userId, clientDto);
-        return "redirect:/"+userId+"/clients";
+        return "redirect:/clients"+userId;
     }
 }

@@ -9,7 +9,11 @@ public interface ClientRepositories extends JpaRepository<Client, Long> {
 
     List<Client> findAllByAccount_id(Long id);
 
+    List<Client> findByLastNameAndFirstNameAndTradeNameAndInnLike(String lastName, String firstName, String tradeName, String inn);
+
     List<Client> findAllByComment(Long id);
 
     List<Client> findAllByAccountIsNull();
+
+    List<Client> findAllByClient_id(Long id);
 }
