@@ -21,7 +21,7 @@ public class ClientProfileController {
 
     @GetMapping("/{id}/clientProfile")
     public String getClientProfilePage(@PathVariable("id") Long clientId, Model model){
-        model.addAttribute("client", clientProfileService.getClient(clientId));
+        model.addAttribute("client_id", clientProfileService.getClient(clientId));
         return "client_profile";
     }
 

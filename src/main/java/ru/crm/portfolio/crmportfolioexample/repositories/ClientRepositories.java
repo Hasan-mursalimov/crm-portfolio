@@ -15,5 +15,5 @@ public interface ClientRepositories extends JpaRepository<Client, Long> {
 
     List<Client> findAllByAccountIsNull();
 
-    List<Client> findAllByClient_id(Long id);
+//    List<Client> findAllByClient_id(Long id);
 }

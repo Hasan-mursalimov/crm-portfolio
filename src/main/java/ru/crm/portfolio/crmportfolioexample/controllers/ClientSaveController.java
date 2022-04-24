@@ -35,6 +35,6 @@ public class ClientSaveController {
             return "client_save";
         }
         clientsService.addClient(form);
-        return "redirect:/clients";
+        return "redirect:/users";
     }
 }

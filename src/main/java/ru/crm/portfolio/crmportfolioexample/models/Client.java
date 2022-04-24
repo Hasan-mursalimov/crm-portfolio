@@ -55,6 +55,7 @@ public class Client {
     @Column(name = "trade_name")
     private String tradeName;
     @ElementCollection
+    @Convert(converter = StringToListConverter.class)
     private List<String> comment;
     @Column(nullable = false)
     private LocalDate birthday;
@@ -76,10 +77,12 @@ public class Client {
     private List<String> numberTel;
     @Column(nullable = false)
     @ElementCollection
+    @Convert(converter = StringToListConverter.class)
     private List<String> address;
     private State state;
     @Column(nullable = false, unique = true)
     @ElementCollection
+    @Convert(converter = StringToListConverter.class)
     private List<String> email;
 
     public enum State {
@@ -100,7 +103,4 @@ public class Client {
         }
         return result;
     }
-
-    ;
-
 }
