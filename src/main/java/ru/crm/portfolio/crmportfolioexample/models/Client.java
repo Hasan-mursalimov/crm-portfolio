@@ -72,16 +72,13 @@ public class Client {
     @JoinColumn(name = "product_id")
     private Product product;
     @Column(nullable = false)
-    @ElementCollection
     @Convert(converter = StringToListConverter.class)
     private List<String> numberTel;
     @Column(nullable = false)
-    @ElementCollection
     @Convert(converter = StringToListConverter.class)
     private List<String> address;
     private State state;
     @Column(nullable = false, unique = true)
-    @ElementCollection
     @Convert(converter = StringToListConverter.class)
     private List<String> email;
 

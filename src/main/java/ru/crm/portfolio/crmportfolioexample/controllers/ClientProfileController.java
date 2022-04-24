@@ -21,14 +21,14 @@ public class ClientProfileController {
 
     @GetMapping("/{id}/clientProfile")
     public String getClientProfilePage(@PathVariable("id") Long clientId, Model model){
-        model.addAttribute("client_id", clientProfileService.getClient(clientId));
+        model.addAttribute("client", clientProfileService.getClient(clientId));
         return "client_profile";
     }
 
     @RequestMapping(value = "/{id}/clientProfile", method = RequestMethod.POST)
-    public String addInfoClient(@PathVariable("id") Long clientId, Model model){
-//        clientProfileService.updateClientInfo(clientId);
-        return "redirect:/clients";
+    public String addInfoClient(@PathVariable("id") Long clientId, Model model, ClientDto clientDto){
+        clientProfileService.updateClientInfo(clientId, clientDto);
+        return "redirect:/"+clientId+"/clientProfile";
     }
 
     public String comment(@PathVariable("comment") String comment, ClientDto clientDto, Model model){

@@ -32,6 +32,6 @@ public class ClientsController {
     @PostMapping("/{userId}")
     public String addClintToUser(@PathVariable("userId") Long userId, ClientDto clientDto){
         clientsService.addClientToUser(userId, clientDto);
-        return "redirect:/clients"+userId;
+        return "redirect:/clients/"+userId;
     }
 }

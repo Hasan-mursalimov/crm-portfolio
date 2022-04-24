@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.mapping.Collection;
 import ru.crm.portfolio.crmportfolioexample.models.Client;
 
 import java.util.List;
@@ -26,26 +27,26 @@ public class ClientDto {
     private List<String> comment;
     private String birthday;
     private String registrationDate;
-    private List<String> numberTel;
-    private List<String> address;
-    private List<String> email;
+    private String numberTel;
+    private String address;
+    private String email;
 
 
     public static ClientDto from(Client client){
         return ClientDto.builder()
                 .id(client.getId())
                 .firstName(client.getFirstName())
-                .address(client.getAddress())
+                .address(String.valueOf(client.getAddress()))
                 .lastName(client.getLastName())
                 .purchaseVolumes(client.getPurchaseVolumes())
                 .inn(client.getInn())
                 .legalName(client.getLegalName())
                 .tradeName(client.getTradeName())
-                .numberTel(client.getNumberTel())
+                .numberTel(String.valueOf(client.getNumberTel()))
                 .comment(client.getComment())
                 .registrationDate(client.getRegistrationDate().toString())
                 .birthday(client.getBirthday().toString())
-                .email(client.getEmail())
+                .email(String.valueOf(client.getEmail()))
                 .build();
     }
 
