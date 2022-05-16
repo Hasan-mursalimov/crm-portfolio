@@ -30,8 +30,10 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(name = "first_name", nullable = false)
     private String firstName;
+
     @Column(name = "last_name", nullable = false)
     private String lastName;
     /**
@@ -54,9 +56,11 @@ public class Client {
      */
     @Column(name = "trade_name")
     private String tradeName;
+
     @ElementCollection
     @Convert(converter = StringToListConverter.class)
     private List<String> comment;
+
     @Column(nullable = false)
     private LocalDate birthday;
     /**
@@ -64,20 +68,25 @@ public class Client {
      */
     @Column(name = "registration_date")
     private LocalDate registrationDate;
+
     @Enumerated(value = EnumType.STRING)
     @ManyToOne
     @JoinColumn(name = "account_id", columnDefinition = "integer default 0")
     private Account account;
+
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
+
     @Column(nullable = false)
     @Convert(converter = StringToListConverter.class)
     private List<String> numberTel;
+
     @Column(nullable = false)
     @Convert(converter = StringToListConverter.class)
     private List<String> address;
     private State state;
+
     @Column(nullable = false, unique = true)
     @Convert(converter = StringToListConverter.class)
     private List<String> email;

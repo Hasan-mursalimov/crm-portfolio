@@ -21,7 +21,7 @@
         <th>Last name</th>
         <th>Trade name</th>
     </tr>
-    <a href="/clients/${user.id}" id="clients">Добавить клиентов</a>
+    <a href="/clients/saveClient/" id="clients">Добавить клиентов</a>
     <#list  clients as client>
         <tr>
             <td>${client.firstName}</td>
@@ -35,7 +35,7 @@
                 </form>
             </td>
             <td>
-                <a href="/${client.id}/clientProfile" id="clientProfile">перейти</a>
+                <a href="/clients/clientProfile/${client.id}" id="clientProfile">перейти</a>
             </td>
         </tr>
     </#list>

@@ -12,7 +12,7 @@
 <h1>Save client</h1>
 <p>save client</p>
 <br>
-<form method="post" action="/saveClient">
+<form method="post" action="/clients/saveClient">
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 

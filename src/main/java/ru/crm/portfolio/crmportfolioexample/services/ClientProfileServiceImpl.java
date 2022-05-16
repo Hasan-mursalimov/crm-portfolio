@@ -7,6 +7,8 @@ import ru.crm.portfolio.crmportfolioexample.form.ClientSaveForm;
 import ru.crm.portfolio.crmportfolioexample.models.Client;
 import ru.crm.portfolio.crmportfolioexample.repositories.ClientRepositories;
 
+import java.util.Collections;
+
 import static ru.crm.portfolio.crmportfolioexample.dto.ClientDto.from;
 
 @RequiredArgsConstructor
@@ -31,11 +33,9 @@ public class ClientProfileServiceImpl implements ClientProfileService {
     @Override
     public void updateClientInfo(Long clientId, ClientDto clientDto) {
         Client clientUpdate = clientRepositories.getById(clientId);
-        clientUpdate.getEmail();
-        clientUpdate.setNumberTel(clientUpdate.getNumberTel());
-        clientUpdate.setAddress(clientUpdate.getAddress());
+        clientUpdate.setEmail(Collections.singletonList(clientDto.getEmail()));
+        clientUpdate.setNumberTel(Collections.singletonList(clientDto.getNumberTel()));
+        clientUpdate.setAddress(Collections.singletonList(clientDto.getAddress()));
         clientRepositories.save(clientUpdate);
     }
-
-
 }

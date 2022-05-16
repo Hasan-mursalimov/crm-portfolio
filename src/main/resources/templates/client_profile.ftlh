@@ -38,7 +38,7 @@
                 }
             </script>
         </head>
-        <form id="form1" style="display: none;" method="post" action="/${client.id}/clientProfile">
+        <form id="form1" style="display: none;" method="post" action="/clients/clientProfile/${client.id}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
                 <label for="numberTel">number tel</label>

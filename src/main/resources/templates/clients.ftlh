@@ -11,7 +11,7 @@
 <h1>Клиенты</h1>
 <br>
 <table>
-    <a href="/saveClient" id="add">добавить</a>
+    <a href="/clients/saveClient" id="add">добавить</a>
     <tr>
         <th>ID</th>
         <th>Legal name</th>
@@ -30,7 +30,7 @@
             <td>${client.lastName}</td>
             <td>${client.numberTel}</td>
             <td>
-                <a href="/${client.id}/clientProfile" id="clientProfile">перейти</a>
+                <a href="/clients/${client.id}/clientProfile" id="clientProfile">перейти</a>
             </td>
         </tr>
     </#list>
@@ -55,7 +55,7 @@
         <td>${client.lastName}</td>
         <td>${client.numberTel}</td>
         <td>
-            <a href="/${client.id}/clientProfile" id="clientProfile">перейти</a>
+            <a href="/clients/${client.id}/clientProfile" id="clientProfile">перейти</a>
         </td>
         <td>
             <form method="post">
